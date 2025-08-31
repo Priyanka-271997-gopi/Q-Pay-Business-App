@@ -1,0 +1,5 @@
+{
+  "name": "QPay Dashboard",
+  "description": "A financial dashboard application to manage QR codes, view transaction history, and handle settlements, built with React and Tailwind CSS.",
+  "requestFramePermissions": []
+}
