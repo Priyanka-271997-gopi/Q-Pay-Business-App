@@ -33,7 +33,7 @@ const HomePage: React.FC = () => {
     const strokeDashoffset: number = circumference - (progress / 100) * circumference;
 
     return (
-        <div className="space-y-6 p-4 sm:p-6 bg-gray-50">
+        <div className="space-y-4 p-4 sm:p-6 bg-gray-50">
             
             <div>
               
@@ -44,84 +44,124 @@ const HomePage: React.FC = () => {
                 />
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <StatCard value="1.5k" label="Account Holders" />
-                <StatCard value="2.1k" label="Transactions" />
-                <StatCard value="2.3k" label="Settlement" />
-                <StatCard value="45k" label="QR Orders" />
-            </div>
+           <div className="flex gap-3 overflow-x-auto scrollbar-hide sm:grid sm:grid-cols-4 sm:gap-4">
+  <StatCard value="1.5k" label="Account Holders" />
+  <StatCard value="2.1k" label="Transactions" />
+  <StatCard value="2.3k" label="Settlement" />
+  <StatCard value="45k" label="QR Orders" />
+</div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                
-                {/* --- Profile Card --- */}
-                <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col">
-                    <h3 className="font-semibold text-gray-400 text-xs uppercase tracking-wider mb-4">PROFILE</h3>
-                    <div className="flex-grow flex flex-col sm:flex-row items-center sm:space-x-6">
-                        <div className="relative w-32 h-32 flex-shrink-0">
-                            <svg
-                                height="100%"
-                                width="100%"
-                                viewBox="0 0 120 120"
-                                className="-rotate-90"
-                            >
-                                <circle className="text-gray-200" stroke="currentColor" strokeWidth={stroke} fill="transparent" r={normalizedRadius} cx={radius + stroke / 2} cy={radius + stroke / 2} />
-                                <circle
-                                    stroke="#4D8B55"
-                                    strokeWidth={stroke}
-                                    strokeDasharray={`${circumference} ${circumference}`}
-                                    style={{ strokeDashoffset }}
-                                    strokeLinecap="round"
-                                    fill="transparent"
-                                    r={normalizedRadius}
-                                    cx={radius + stroke / 2}
-                                    cy={radius + stroke / 2}
-                                />
-                            </svg>
-                            <span className="absolute inset-0 flex items-center justify-center text-2xl font-bold" style={{ color: '#4D8B55' }}>
-                                {progress}%
-                            </span>
-                        </div>
-                        <div className="mt-4 sm:mt-0 text-center sm:text-left">
-                            <h4 className="font-semibold text-gray-800 text-lg">Complete your profile</h4>
-                            <ul className="mt-2 space-y-1.5 text-gray-500">
-                                <li className="flex items-center justify-center sm:justify-start"><span className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3"></span>Personal KYC</li>
-                                <li className="flex items-center justify-center sm:justify-start"><span className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3"></span>Company KYC</li>
-                                <li className="flex items-center justify-center sm:justify-start"><span className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3"></span>Onboarding details</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <button
-                        className="mt-8 w-full text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
-                        style={{ backgroundColor: '#4D8B55' }}
-                    >
-                        Next
-                    </button>
-                </div>
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  {/* --- Profile Card --- */}
+  <div className="bg-white p-4 sm:p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+    <h3 className="font-semibold text-gray-400 text-xs uppercase tracking-wider mb-4">
+      PROFILE
+    </h3>
 
-                {/* --- QR Card --- */}
-                <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col">
-                    <h3 className="font-semibold text-gray-400 text-xs uppercase tracking-wider mb-4">QR</h3>
-                    <div className="flex-grow flex flex-col sm:flex-row items-center sm:space-x-6">
-                        <div className="flex-shrink-0">
-                             <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=Example" alt="QR Code" className="w-32 h-32" />
-                        </div>
-                        <div className="mt-4 sm:mt-0 text-center sm:text-left">
-                            <h4 className="font-semibold text-gray-800 text-lg">Order QR</h4>
-                            <ul className="mt-2 space-y-1.5 text-gray-500">
-                                <li className="flex items-center justify-center sm:justify-start"><span className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3"></span>Receive Payment</li>
-                                <li className="flex items-center justify-center sm:justify-start"><span className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3"></span>Order new QRs</li>
-                                <li className="flex items-center justify-center sm:justify-start"><span className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3"></span>Download QR</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <button
-                        className="mt-8 w-full text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
-                        style={{ backgroundColor: '#4D8B55' }}
-                    >
-                        View more
-                    </button>
-                </div>
-            </div>
+    <div className="flex-grow flex flex-col sm:flex-row items-center sm:space-x-6">
+      {/* Circle Progress */}
+      <div className="relative w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0">
+        <svg height="100%" width="100%" viewBox="0 0 120 120" className="-rotate-90">
+          <circle
+            className="text-gray-200"
+            stroke="currentColor"
+            strokeWidth={stroke}
+            fill="transparent"
+            r={normalizedRadius}
+            cx={radius + stroke / 2}
+            cy={radius + stroke / 2}
+          />
+          <circle
+            stroke="#4D8B55"
+            strokeWidth={stroke}
+            strokeDasharray={`${circumference} ${circumference}`}
+            style={{ strokeDashoffset }}
+            strokeLinecap="round"
+            fill="transparent"
+            r={normalizedRadius}
+            cx={radius + stroke / 2}
+            cy={radius + stroke / 2}
+          />
+        </svg>
+        <span
+          className="absolute inset-0 flex items-center justify-center text-xl sm:text-2xl font-bold"
+          style={{ color: "#4D8B55" }}
+        >
+          {progress}%
+        </span>
+      </div>
+
+      {/* Profile Info */}
+      <div className="mt-4 sm:mt-0 text-center sm:text-left">
+        <h4 className="font-semibold text-gray-800 text-base sm:text-lg">
+          Complete your profile
+        </h4>
+        <ul className="mt-2 space-y-1.5 text-gray-500 text-sm sm:text-base">
+          <li className="flex items-center justify-center sm:justify-start">
+            <span className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3"></span>
+            Personal KYC
+          </li>
+          <li className="flex items-center justify-center sm:justify-start">
+            <span className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3"></span>
+            Company KYC
+          </li>
+          <li className="flex items-center justify-center sm:justify-start">
+            <span className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3"></span>
+            Onboarding details
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    {/* Button */}
+    <button
+      className="mt-6 sm:mt-8 w-full text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base"
+      style={{ backgroundColor: "#4D8B55" }}
+    >
+      Next
+    </button>
+  </div>
+
+  {/* --- QR Card --- */}
+  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+    <h3 className="font-semibold text-gray-400 text-xs uppercase tracking-wider mb-4">
+      QR
+    </h3>
+    <div className="flex-grow flex flex-col sm:flex-row items-center sm:space-x-6">
+      <div className="flex-shrink-0">
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=Example"
+          alt="QR Code"
+          className="w-32 h-32"
+        />
+      </div>
+      <div className="mt-4 sm:mt-0 text-center sm:text-left">
+        <h4 className="font-semibold text-gray-800 text-lg">Order QR</h4>
+        <ul className="mt-2 space-y-1.5 text-gray-500">
+          <li className="flex items-center justify-center sm:justify-start">
+            <span className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3"></span>
+            Receive Payment
+          </li>
+          <li className="flex items-center justify-center sm:justify-start">
+            <span className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3"></span>
+            Order new QRs
+          </li>
+          <li className="flex items-center justify-center sm:justify-start">
+            <span className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3"></span>
+            Download QR
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button
+      className="mt-8 w-full text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
+      style={{ backgroundColor: "#4D8B55" }}
+    >
+      View more
+    </button>
+  </div>
+</div>
+
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 
