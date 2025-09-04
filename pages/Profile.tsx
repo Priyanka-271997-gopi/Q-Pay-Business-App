@@ -102,26 +102,28 @@ interface SectionCardProps {
   children: React.ReactNode;
 }
 
+
 const SectionCard: React.FC<SectionCardProps> = ({ title, children }) => (
   <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm">
     <h3 className="text-xs font-bold text-gray-400 uppercase mb-4 tracking-wider">{title}</h3>
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4">
       {children}
     </div>
   </div>
 );
-
 interface ActionButtonProps {
   icon: React.ReactNode;
   label: string;
 }
 
 const ActionButton: React.FC<ActionButtonProps> = ({ icon, label }) => (
-  <div className="flex flex-col items-center text-center space-y-2 cursor-pointer group flex-1">
+  <div className="flex flex-col items-center text-center space-y-2 cursor-pointer group min-w-[100px]">
     <div className="bg-gray-50 p-4 rounded-2xl transition-all duration-300 group-hover:bg-gray-100">
       {icon}
     </div>
-    <p className="text-sm font-medium text-gray-800 leading-tight break-words">{label}</p>
+    <p className="text-sm font-medium text-gray-800 leading-tight text-center break-words whitespace-normal">
+      {label}
+    </p>
   </div>
 );
 
@@ -171,4 +173,4 @@ const ProfilePage: React.FC = () => {
   );
 };
 
-export default ProfilePage;
+export default ProfilePage; 
