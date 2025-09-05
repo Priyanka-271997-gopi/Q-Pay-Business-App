@@ -66,7 +66,7 @@ const PhonePeIcon: React.FC<{ className?: string }> = (props) => (
 );
 
 const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMjgyMDUiLCJtb2JpbGUiOiI3MzU4MjIxMzU0IiwiYXBwX2lkIjoiNjAiLCJtaWQiOiIzNDgiLCJ0b2tlbiI6IjZjZjFhMzNhZDJkOGQyNjFkMWYwNDBiMWIwZGViMjc1IiwiZ3JvdXBJZCI6IjIxMDYxIiwiaXNzIjoiMjgyMDUifQ.ADopz72M1Z-eKpFXJd04RZvLxXHyJ8fFaT4HnzxxQCk';
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const API_BASE_URL =  import.meta.env.VITE_API_BASE_URL;
 
 
 
