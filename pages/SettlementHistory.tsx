@@ -65,10 +65,7 @@ const PhonePeIcon: React.FC<{ className?: string }> = (props) => (
     </svg>
 );
 
-
-
 const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMjgyMDUiLCJtb2JpbGUiOiI3MzU4MjIxMzU0IiwiYXBwX2lkIjoiNjAiLCJtaWQiOiIzNDgiLCJ0b2tlbiI6IjZjZjFhMzNhZDJkOGQyNjFkMWYwNDBiMWIwZGViMjc1IiwiZ3JvdXBJZCI6IjIxMDYxIiwiaXNzIjoiMjgyMDUifQ.ADopz72M1Z-eKpFXJd04RZvLxXHyJ8fFaT4HnzxxQCk';
-// const API_BASE_URL = '/wallet/api/v1/transaction_history';
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 
@@ -215,7 +212,7 @@ const SettlementHistoryPage: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${API_BASE_URL}?service_id=111&page=${pageNum}`, {
+      const response = await fetch(`${API_BASE_URL}/transaction_history?service_id=111&page=${pageNum}`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${API_TOKEN}`,
@@ -236,6 +233,12 @@ const SettlementHistoryPage: React.FC = () => {
   };
 
   useEffect(() => {
+    if (!API_BASE_URL) {
+      console.error("API_BASE_URL is not defined. Check your .env setup on Netlify.");
+      setError("API configuration error. Please contact support.");
+      setLoading(false);
+      return;
+    }
     fetchTransactions(page);
   }, [page]);
 
