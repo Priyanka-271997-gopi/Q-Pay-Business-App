@@ -254,7 +254,7 @@ const SettlementHistoryPage: React.FC = () => {
       <div className="max-w-7xl mx-auto space-y-6">
         <SettleNowModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-gray-800">Settlement History</h1>
+          <h1 className="text-3xl font-bold text-gray-800">Settlement History v2 Test</h1>
           <button className="px-4 py-2 text-sm font-semibold text-green-700 bg-white border border-green-300 rounded-lg hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
             Download statement
           </button>
